@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:dio_log_sds/bean/net_options.dart';
+import 'package:dio_log_sds/bean/req_options.dart';
 import 'package:flutter/material.dart';
 
 import '../dio_log_sds.dart';
@@ -91,6 +92,19 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
                     },
                     child: Text(
                       'copy url',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      copyClipboard(context, '${convertcURL(reqOpt)}');
+                    },
+                    child: Text(
+                      'copy cURL',
                     ),
                   ),
                 ),
@@ -218,6 +232,28 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
       return 'formData:${map2Json(formDataMap)}';
     } else {
       return 'body:${toJson(data)}';
+    }
+  }
+
+  String convertcURL(ReqOptions reqOptions) {
+    try {
+      String method = '--request ${reqOptions.method}';
+      String url = 'curl --location $method ${reqOptions.url}';
+
+      String header = '';
+      if (reqOptions.headers != null) {
+        reqOptions.headers!.forEach((key, value) {
+          if (value != '') header += "--header '${key}:${value}' \\ \n ";
+        });
+      }
+
+      String data =
+          reqOptions.data != null ? '--data ${toJson(reqOptions.data)}' : "";
+      String result = '$url  \n $header \n $data';
+      print(result);
+      return result;
+    } catch (e) {
+      return "";
     }
   }
 }
