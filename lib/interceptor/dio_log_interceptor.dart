@@ -14,7 +14,7 @@ class SDSDioLogInterceptor implements Interceptor {
 
   ///错误数据采集
   @override
-  Future onError(DioError err, ErrorInterceptorHandler handler) async {
+  Future onError(DioException err, ErrorInterceptorHandler handler) async {
     var errOptions = ErrOptions();
     errOptions.id = err.requestOptions.hashCode;
     errOptions.errorMsg = err.toString();

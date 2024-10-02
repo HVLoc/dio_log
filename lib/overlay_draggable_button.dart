@@ -11,7 +11,7 @@ showDebugBtn(BuildContext context, {Widget? button, Color? btnColor}) {
         builder: (BuildContext context) =>
             button ?? DraggableButtonWidget(btnColor: btnColor));
 
-    Overlay.of(context)?.insert(itemEntry!);
+    Overlay.of(context).insert(itemEntry!);
   });
 }
 
