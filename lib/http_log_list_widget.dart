@@ -37,7 +37,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
       appBar: AppBar(
         title: Text(
           'Request Logs',
-          style: theme.textTheme.headline6,
+          style: theme.textTheme.titleLarge,
         ),
         backgroundColor: theme.scaffoldBackgroundColor,
         elevation: 1.0,
@@ -50,7 +50,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               child: Align(
                 child: Text(
                   debugBtnIsShow() ? 'Close overlay' : 'Open overlay',
-                  style: theme.textTheme.caption!
+                  style: theme.textTheme.bodySmall!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -63,7 +63,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               child: Align(
                 child: Text(
                   'Clear',
-                  style: theme.textTheme.caption!
+                  style: theme.textTheme.bodySmall!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -126,7 +126,7 @@ class _LogItem extends StatelessWidget {
 
     Color? textColor = (item.errOptions != null || resOpt?.statusCode == null)
         ? Colors.red
-        : Theme.of(context).textTheme.bodyText1!.color;
+        : Theme.of(context).textTheme.bodyLarge!.color;
 
     return Card(
       margin: EdgeInsets.all(8),
