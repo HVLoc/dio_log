@@ -248,7 +248,7 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
       }
 
       String data = reqOptions.data != null
-          ? "--data ' ${toJson(reqOptions.data)} '"
+          ? "--data '${toJson(reqOptions.data)}'"
           : "";
       String result = '$url  \n $header \n $data';
       print(result);
